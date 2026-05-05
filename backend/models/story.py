@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 from db.database import Base
 
-class Story():
+class Story(Base):
     __tablename__ = "stories"
 
     # just like how we query in SQL:
