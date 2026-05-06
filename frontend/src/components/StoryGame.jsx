@@ -42,6 +42,7 @@ function StoryGame({story, onNewStory}) {
     }
 
     return <div className="story-game">
+        {/* Story Title: */}
         <header className="story-header">
             <h2>{story.title}</h2>
         </header>
@@ -76,11 +77,11 @@ function StoryGame({story, onNewStory}) {
                 <button onClick={restartStory} className="reset-btn">
                     Restart Story
                 </button>
-            </div>
 
-            {onNewStory && <button onClick={onNewStory} className="new-story-btn">
-                New Story    
-            </button>}
+                {onNewStory && <button onClick={onNewStory} className="new-story-btn">
+                    New Story
+                </button>}
+            </div>
         </div>
     </div>
 }

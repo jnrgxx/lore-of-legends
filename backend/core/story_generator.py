@@ -1,7 +1,9 @@
 from sqlalchemy.orm import Session
+from sqlalchemy.orm.attributes import flag_modified
 from core.config import settings
 
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser # take a str response from LLM > pipe it into python Class
 
@@ -14,10 +16,9 @@ class StoryGenerator:
     @classmethod
     def _get_llm(cls): # underscore @ start bcoz it's Private Method
         #return ChatOpenAI(model="gpt-4-turbo")
-        return ChatOpenAI(
-            model=settings.OPENROUTER_MODEL,
-            api_key=settings.OPENROUTER_API_KEY,
-            base_url=settings.OPENROUTER_BASE_URL,
+        return ChatGoogleGenerativeAI(
+            model=settings.MODEL,
+            google_api_key=settings.API_KEY,
         )
 
     @classmethod
@@ -98,6 +99,7 @@ class StoryGenerator:
                     "node_id": child_node.id,
                 })
 
-                node.options = options_list
+            node.options = options_list
+            flag_modified(node, "options")
         db.flush()
         return node

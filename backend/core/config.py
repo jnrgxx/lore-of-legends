@@ -10,10 +10,9 @@ class Settings(BaseSettings):
 
     ALLOWED_ORIGINS: str = ""
 
-    #OPENAI_API_KEY: str
-    OPENROUTER_API_KEY: str
-    OPENROUTER_BASE_URL: str = "https://openrouter.ai/api/v1"
-    OPENROUTER_MODEL: str = "openai/gpt-oss-120b:free"
+    API_KEY: str
+    # MODEL: str = "gemini-2.5-flash"
+    MODEL: str = "gemini-2.5-flash-lite"
 
     @field_validator("ALLOWED_ORIGINS")
     def parse_allowed_origins(cls, v: str) -> List[str]:
