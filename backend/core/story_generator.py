@@ -2,8 +2,12 @@ from sqlalchemy.orm import Session
 from sqlalchemy.orm.attributes import flag_modified
 from core.config import settings
 
+# GPT OpenAI LLM:
 # from langchain_openai import ChatOpenAI
+
+# Gemini AI LLM:
 from langchain_google_genai import ChatGoogleGenerativeAI
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser # take a str response from LLM > pipe it into python Class
 
@@ -16,6 +20,14 @@ class StoryGenerator:
     @classmethod
     def _get_llm(cls): # underscore @ start bcoz it's Private Method
         #return ChatOpenAI(model="gpt-4-turbo")
+
+        # OpenAI GPT
+        # return ChatOpenAI(
+        #     model=settings.MODEL,
+        #     api_key=settings.API_KEY,
+        # )
+
+        # Using Gemini LLM:
         return ChatGoogleGenerativeAI(
             model=settings.MODEL,
             google_api_key=settings.API_KEY,

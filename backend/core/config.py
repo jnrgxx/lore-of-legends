@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     API_KEY: str
     # MODEL: str = "gemini-2.5-flash"
     MODEL: str = "gemini-2.5-flash-lite"
+    # MODEL: str = "openai/gpt-oss-120b:free"
 
     @field_validator("ALLOWED_ORIGINS")
     def parse_allowed_origins(cls, v: str) -> List[str]:
