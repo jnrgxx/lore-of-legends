@@ -17,6 +17,14 @@ A full-stack interactive story generation platform where users input a theme and
 - **🧠 LLM-Powered** — Uses Google Gemini (via LangChain) with Pydantic-validated structured output to guarantee deterministic, tree-shaped JSON.
 - **📱 Responsive Frontend** — Built with React 19, Vite, and React Router for a fast, client-side experience.
 
+## 🌐 Deployments
+
+| Service | URL |
+|---------|-----|
+| **Frontend** (Vercel) | [https://lore-of-legends-pi.vercel.app/](https://lore-of-legends-pi.vercel.app/) |
+| **Backend API** (Render) | [https://lore-of-legends.onrender.com](https://lore-of-legends.onrender.com) |
+| **API Docs** (Swagger UI) | [https://lore-of-legends.onrender.com/docs](https://lore-of-legends.onrender.com/docs) |
+
 ## 🏗️ Tech Stack
 
 ### Backend (`backend/`)
@@ -159,13 +167,6 @@ lore-of-legends/
 
    The app will be available at `http://localhost:5173`.
 
-## 🌐 Deployments
-
-| Service | URL |
-|---------|-----|
-| **Frontend** (Vercel) | [https://lore-of-legends-pi.vercel.app/](https://lore-of-legends-pi.vercel.app/) |
-| **Backend API** (Render) | [https://lore-of-legends.onrender.com](https://lore-of-legends.onrender.com) |
-| **API Docs** (Swagger UI) | [https://lore-of-legends.onrender.com/docs](https://lore-of-legends.onrender.com/docs) |
 
 ## ⚙️ API Endpoints
 
