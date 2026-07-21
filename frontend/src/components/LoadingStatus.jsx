@@ -1,13 +1,14 @@
 function LoadingStatus({theme}) {
     return <div className="loading-container">
-        <h2>Generating Your {theme} Story</h2>
+        <h2>Weaving the Hextech Loom</h2>
+        <div className="theme-name">{theme}</div>
 
         <div className="loading-animation">
             <div className="spinner"></div>
         </div>
 
-        <p className="">
-            Please wait while we generate your story...
+        <p className="loading-info">
+            The Chronicler of Runeterra is forging your legend
         </p>
     </div>
 }

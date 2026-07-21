@@ -8,7 +8,8 @@ function App() {
     <Router>
       <div className="app-container">
         <header>
-          <h1>Interactive Story Generator</h1>
+          <h1>Lore of <span className="accent">Legends</span></h1>
+          <p>Forged in the hextech fires of Runeterra — carve your own legend</p>
         </header>
 
         <main>
@@ -17,6 +18,10 @@ function App() {
               <Route path={"/"} element={<StoryGenerator />} />
           </Routes>
         </main>
+
+        <footer>
+          <span>A Chronicle of Runeterra — Interactive Story Generator</span>
+        </footer>
       </div>
     </Router>
   )
