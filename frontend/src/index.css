@@ -1,111 +1,150 @@
+/* =============================================
+   LORE OF LEGENDS — League of Legends Theme
+   Deep viridian · Gold gilded · Steel accents
+   ============================================= */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* --- Core Palette (Dark Viridian) --- */
+  --lol-bg-deep: #0A0E0C;
+  --lol-bg-dark: #0F1411;
+  --lol-bg-panel: rgba(15, 20, 17, 0.88);
+  --lol-bg-card: rgba(18, 24, 20, 0.82);
+  --lol-bg-input: rgba(10, 14, 12, 0.9);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* --- Gold Accents (LoL signature — C89B3C is Riot's official gold) --- */
+  --lol-gold: #C89B3C;
+  --lol-gold-bright: #F0D28C;
+  --lol-gold-light: #D4B45A;
+  --lol-gold-dark: #8B6914;
+  --lol-gold-glow: rgba(200, 155, 60, 0.2);
+  --lol-gold-bg: rgba(200, 155, 60, 0.06);
+  --lol-gold-border: rgba(200, 155, 60, 0.3);
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* --- Steel / Blue-Gray Accent (replaces purple) --- */
+  --lol-steel: #5B7A6E;
+  --lol-steel-light: #7A9B8E;
+  --lol-steel-dark: #3D5A4E;
+  --lol-steel-glow: rgba(91, 122, 110, 0.2);
+  --lol-steel-bg: rgba(91, 122, 110, 0.08);
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* --- Neutral Tones (warmer, less blue) --- */
+  --lol-text: #C8C9C0;
+  --lol-text-bright: #EDEEE8;
+  --lol-text-muted: #8A8E86;
+  --lol-text-sub: #5A6059;
+  --lol-border: rgba(200, 201, 192, 0.06);
+  --lol-border-hover: rgba(200, 201, 192, 0.15);
+
+  /* --- Status --- */
+  --lol-success: #3B8B5B;
+  --lol-success-bg: rgba(59, 139, 91, 0.1);
+  --lol-destructive: #B83A2A;
+  --lol-destructive-bg: rgba(184, 58, 42, 0.1);
+
+  /* --- Geometry --- */
+  --radius: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-xs: 0.1875rem;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 0 16px rgba(200, 155, 60, 0.12);
+
+  /* --- Typography --- */
+  --font-display: 'Cinzel Decorative', 'Cinzel', serif;
+  --font-heading: 'Cinzel', 'Georgia', serif;
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'Courier New', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--lol-text);
+  background-color: var(--lol-bg-deep);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(91, 122, 110, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(200, 155, 60, 0.03) 0%, transparent 45%),
+    linear-gradient(180deg, var(--lol-bg-deep) 0%, #0C110E 40%, var(--lol-bg-dark) 100%);
+  background-attachment: fixed;
+}
+
+/* Subtle grid/line overlay — like the LoL client background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 200, 192, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 192, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 #root {
-  width: 1126px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
   max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+::-webkit-scrollbar-track {
+  background: var(--lol-bg-deep);
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
+::-webkit-scrollbar-thumb {
+  background: var(--lol-steel-dark);
   border-radius: 4px;
-  color: var(--text-h);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lol-steel);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* ===== Selection ===== */
+::selection {
+  background: var(--lol-gold-glow);
+  color: var(--lol-gold-bright);
+}
+
+/* ===== Typography base ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--lol-text-bright);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--lol-gold-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--lol-gold-bright);
+  text-shadow: 0 0 8px var(--lol-gold-glow);
 }

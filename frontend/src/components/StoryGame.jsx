@@ -22,7 +22,6 @@ function StoryGame({story, onNewStory}) {
             setIsEnding(node.is_ending)
             setIsWinningEnding(node.is_winning_ending)
 
-            // if (!node.options && node.options && node.options.length > 0) {
             if (node.options && node.options.length > 0) { 
                 setOptions(node.options)
             } else {
@@ -52,12 +51,16 @@ function StoryGame({story, onNewStory}) {
                 <p>{currentNode.content}</p>    
             
                 {isEnding ? <div className="story-ending">
-                    <h3>{isWinningEnding ? "Congratulations" : "The End"}</h3>
-                    {isWinningEnding ? "You reached a winning ending": "Your adventure has ended."}
+                    <h3>{isWinningEnding ? "Victory" : "The Chronicle Ends"}</h3>
+                    <p className={isWinningEnding ? "winning-message" : "ending-message"}>
+                        {isWinningEnding 
+                            ? "You have carved your name into the legends of Runeterra." 
+                            : "Your journey through the realms of Runeterra has reached its conclusion."}
+                    </p>
                 </div> 
                 : 
                 <div className="story-options">
-                    <h3>What will you do</h3>
+                    <h3>Choose Your Path</h3>
                     <div className="options-list">
                         {options.map((option, index) => {
                             return <button 
@@ -75,11 +78,11 @@ function StoryGame({story, onNewStory}) {
 
             <div className="story-controls">
                 <button onClick={restartStory} className="reset-btn">
-                    Restart Story
+                    Rewind the Chronicle
                 </button>
 
                 {onNewStory && <button onClick={onNewStory} className="new-story-btn">
-                    New Story
+                    Forge New Legend
                 </button>}
             </div>
         </div>

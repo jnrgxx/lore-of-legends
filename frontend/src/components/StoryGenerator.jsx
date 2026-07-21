@@ -48,7 +48,7 @@ function StoryGenerator() {
             pollJobStatus(job_id)
         } catch (e) {
             setLoading(false)
-            setError(`Failed to generate story: ${e.message}`)
+            setError(`The hextech forge has failed: ${e.message}`)
         }
     } 
 
@@ -65,13 +65,13 @@ function StoryGenerator() {
                 // if completed: avigate to the story page:
                 fetchStory(story_id)
             } else if (status === "failed" || jobError) {
-                setError(jobError || "Failed to generate story")
+                setError(jobError || "The chronicle could not be woven.")
                 setLoading(false)
             }
 
         } catch (e) {
             if (e.response?.status !== 404) {
-                setError(`Failed to check story status: ${e.message}`)
+                setError(`Failed to consult the arcane: ${e.message}`)
                 setLoading(false)
             }
         }
@@ -84,7 +84,7 @@ function StoryGenerator() {
             setJobStatus("completed")
             navigate(`/story/${id}`)
         } catch (e) {
-            setError(`Failed to load story: ${e.message}`)
+            setError(`Failed to open the chronicle: ${e.message}`)
             setLoading(false)
         }
     }

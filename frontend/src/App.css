@@ -1,94 +1,74 @@
 /* =============================================
-   Portfolio-inspired design system
-   Warm cream · Blue accent · Syne/DM Serif
+   LORE OF LEGENDS — Component Styles
+   Dark viridian · Gold gilded · Steel accents
    ============================================= */
-
-/* ---------- Design Tokens ---------- */
-:root {
-  --bg: #F5F0E8;
-  --bg-card: #FEFCF8;
-  --fg: #16150E;
-  --fg-muted: #78756C;
-  --fg-sub: #AEA9A0;
-  --border: rgba(22, 21, 14, 0.1);
-  --border-hover: rgba(22, 21, 14, 0.18);
-
-  --acc: #2563EB;
-  --acc-hover: #1d4ed8;
-  --acc-bg: rgba(37, 99, 235, 0.06);
-  --acc-border: rgba(37, 99, 235, 0.28);
-
-  --destructive: #d32f2f;
-  --success: #2A6241;
-  --success-bg: #D4EDDA;
-
-  --radius: 0.75rem;
-  --radius-sm: 0.375rem;
-  --shadow: 0 1px 3px rgba(22, 21, 14, 0.06);
-
-  --font-heading: 'Syne', 'Segoe UI', sans-serif;
-  --font-body: 'DM Serif Display', Georgia, serif;
-  --font-mono: 'DM Mono', 'Fira Code', monospace;
-}
-
-/* ---------- Reset & Base ---------- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: var(--fg);
-  background-color: var(--bg);
-  min-height: 100vh;
-}
 
 /* ---------- Layout ---------- */
 .app-container {
-  max-width: 42rem;
+  max-width: 48rem;
   margin: 0 auto;
-  padding: 2.5rem 1rem;
+  padding: 2rem 1rem 3rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 /* ---------- Header ---------- */
 header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  width: 100%;
+}
+
+/* Decorative gold line above header */
+header::before {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--lol-gold), transparent);
+  margin: 0 auto 1.5rem;
 }
 
 header h1 {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
+  font-family: var(--font-display);
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--fg);
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lol-gold-bright);
+  text-shadow: 0 0 30px var(--lol-gold-glow), 0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 0.5rem;
+}
+
+header h1 .accent {
+  color: var(--lol-text-bright);
 }
 
 header p {
-  color: var(--fg-muted);
-  font-size: 0.9375rem;
+  font-family: var(--font-body);
+  color: var(--lol-text-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  font-weight: 300;
 }
 
-/* ---------- Buttons ---------- */
+/* Decorative gold line below header */
+header::after {
+  content: '';
+  display: block;
+  width: 8rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lol-gold-dark), transparent);
+  margin: 1.25rem auto 0;
+}
+
+/* ---------- Shared Button Base ---------- */
 button {
   font-family: var(--font-heading);
-  font-size: 0.8125rem;
+  font-size: 0.8rem;
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -97,116 +77,164 @@ button {
   justify-content: center;
   gap: 0.5rem;
   white-space: nowrap;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background-color: var(--acc);
-  color: #fff;
-  padding: 0.5rem 1rem;
-  transition: background-color 0.15s, border-color 0.15s;
+  border: 1px solid var(--lol-border);
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--lol-text);
+  padding: 0.6rem 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.02) 100%);
+  pointer-events: none;
 }
 
 button:hover {
-  background-color: var(--acc-hover);
+  border-color: var(--lol-gold-border);
+  color: var(--lol-gold-bright);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-1px);
 }
 
 button:focus-visible {
-  outline: 2px solid var(--acc);
+  outline: 2px solid var(--lol-gold);
   outline-offset: 2px;
 }
 
-/* Ghost / secondary button */
-.home-btn,
-.reset-btn {
-  background-color: transparent;
-  color: var(--fg);
-  border-color: var(--border);
-  text-transform: none;
-  letter-spacing: normal;
-  font-weight: 500;
+button:active {
+  transform: translateY(0);
 }
 
-.home-btn:hover,
-.reset-btn:hover {
-  background-color: var(--acc-bg);
-  border-color: var(--acc-border);
-}
-
-/* Generate / restart / new story */
+/* ---------- Primary / Gold Button ---------- */
 .generate-btn,
 .restart-btn,
 .new-story-btn {
-  background-color: var(--acc);
-  color: #fff;
-  border-color: transparent;
-  padding: 0.625rem 1.25rem;
+  background: linear-gradient(135deg, var(--lol-gold-dark) 0%, var(--lol-gold) 50%, var(--lol-gold-dark) 100%);
+  background-size: 200% 200%;
+  border-color: var(--lol-gold);
+  color: #0A0E0C;
+  font-weight: 700;
+  padding: 0.75rem 1.75rem;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.15);
+  box-shadow: 0 0 15px rgba(200, 155, 60, 0.12);
 }
 
 .generate-btn:hover,
 .restart-btn:hover,
 .new-story-btn:hover {
-  background-color: var(--acc-hover);
+  background-position: 100% 100%;
+  border-color: var(--lol-gold-bright);
+  color: #000;
+  box-shadow: 0 0 25px rgba(200, 155, 60, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Option buttons (story choices) */
+.generate-btn:active,
+.restart-btn:active,
+.new-story-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.15);
+}
+
+/* ---------- Ghost / Secondary Button ---------- */
+.home-btn,
+.reset-btn {
+  background: transparent;
+  border: 1px solid var(--lol-border-hover);
+  color: var(--lol-text-muted);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+.home-btn:hover,
+.reset-btn:hover {
+  background: var(--lol-steel-bg);
+  border-color: var(--lol-steel);
+  color: var(--lol-steel-light);
+  box-shadow: 0 0 12px var(--lol-steel-glow);
+}
+
+/* ---------- Option Buttons (story choices) ---------- */
 .option-btn {
   text-align: left;
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1.25rem;
   justify-content: flex-start;
-  background-color: var(--acc-bg);
-  color: var(--fg);
-  border: 1px solid var(--acc-border);
+  background: var(--lol-bg-card);
+  border: 1px solid var(--lol-border-hover);
+  color: var(--lol-text);
   text-transform: none;
   letter-spacing: normal;
-  font-weight: 500;
+  font-weight: 400;
+  font-family: var(--font-body);
+  font-size: 0.925rem;
+  border-radius: var(--radius-xs);
+  backdrop-filter: blur(4px);
 }
 
 .option-btn:hover {
-  background-color: rgba(37, 99, 235, 0.12);
-  border-color: var(--acc);
-  transform: translateY(-1px);
+  background: var(--lol-steel-bg);
+  border-color: var(--lol-steel);
+  color: var(--lol-text-bright);
+  box-shadow: 0 0 16px var(--lol-steel-glow);
+  transform: translateX(4px);
 }
 
-/* Share / view buttons */
+.option-btn::before {
+  content: '▸';
+  color: var(--lol-gold);
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.option-btn:hover::before {
+  opacity: 1;
+}
+
+/* ---------- Share / View Buttons ---------- */
 .share-btn,
 .view-btn {
-  background-color: transparent;
-  color: var(--fg-muted);
+  background: transparent;
+  color: var(--lol-text-muted);
   border: none;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   padding: 0.25rem 0.5rem;
   text-transform: none;
   letter-spacing: normal;
+  font-family: var(--font-body);
 }
 
 .share-btn:hover,
 .view-btn:hover {
-  color: var(--fg);
-  background-color: var(--acc-bg);
+  color: var(--lol-gold-light);
+  box-shadow: none;
+  transform: none;
 }
 
-/* Error button */
-.error-message button {
-  background-color: var(--destructive);
-  color: #fff;
-  border-color: transparent;
-}
-
-.error-message button:hover {
-  opacity: 0.9;
-}
-
-/* ---------- Cards ---------- */
+/* ---------- Card / Panel Base ---------- */
 .theme-input-container,
 .loading-container,
 .story-container,
 .story-loader,
 .story-game {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--lol-bg-card);
+  border: 1px solid var(--lol-border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: 100%;
 }
 
 .theme-input-container,
@@ -217,128 +245,199 @@ button:focus-visible {
 /* ---------- Theme Input ---------- */
 .theme-input-container {
   text-align: center;
+  position: relative;
+}
+
+/* Decorative corner accents */
+.theme-input-container::before,
+.theme-input-container::after {
+  content: '◇';
+  position: absolute;
+  color: var(--lol-gold-dark);
+  font-size: 0.6rem;
+  opacity: 0.3;
+}
+.theme-input-container::before {
+  top: 0.75rem;
+  left: 0.75rem;
+}
+.theme-input-container::after {
+  bottom: 0.75rem;
+  right: 0.75rem;
 }
 
 .theme-input-container h2 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lol-gold-light);
   margin-bottom: 0.5rem;
-  color: var(--fg);
 }
 
 .theme-input-container p {
   font-family: var(--font-body);
-  color: var(--fg-muted);
-  font-size: 0.9375rem;
-  margin-bottom: 1.5rem;
+  color: var(--lol-text-muted);
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-bottom: 1.75rem;
 }
 
 .input-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .input-group input {
   width: 100%;
-  padding: 0.625rem 0.75rem;
-  font-size: 0.9375rem;
-  font-family: var(--font-mono);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background-color: var(--bg);
-  color: var(--fg);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  border: 1px solid var(--lol-border);
+  border-radius: var(--radius-xs);
+  background: var(--lol-bg-input);
+  color: var(--lol-text-bright);
+  transition: all 0.25s ease;
+  letter-spacing: 0.02em;
+}
+
+.input-group input::placeholder {
+  color: var(--lol-text-sub);
+  font-weight: 300;
+  font-style: italic;
 }
 
 .input-group input:focus {
   outline: none;
-  border-color: var(--acc);
-  box-shadow: 0 0 0 3px var(--acc-bg);
+  border-color: var(--lol-gold);
+  box-shadow: 0 0 12px var(--lol-gold-glow), inset 0 0 8px rgba(200, 155, 60, 0.04);
+  background: rgba(10, 14, 12, 0.95);
 }
 
 .input-group input.error {
-  border-color: var(--destructive);
+  border-color: var(--lol-destructive);
+  box-shadow: 0 0 12px rgba(184, 58, 42, 0.2);
 }
 
 .input-group input.error:focus {
-  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
+  box-shadow: 0 0 12px rgba(184, 58, 42, 0.3);
 }
 
 .error-text {
-  color: var(--destructive);
-  font-size: 0.8125rem;
-  margin-top: 0.375rem;
+  color: var(--lol-destructive);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
   text-align: left;
   font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: 0.04em;
 }
 
 /* ---------- Examples ---------- */
 .examples {
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
   text-align: left;
 }
 
 .examples h3 {
   font-family: var(--font-heading);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--fg-muted);
+  margin-bottom: 0.75rem;
+  color: var(--lol-text-sub);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
 .examples ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.375rem;
+  gap: 0.5rem;
 }
 
 .examples li {
-  padding: 0.25rem 0.625rem;
-  font-size: 0.8125rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
   font-family: var(--font-heading);
-  background-color: var(--acc-bg);
-  color: var(--fg);
-  border-radius: var(--radius-sm);
+  font-weight: 500;
+  background: var(--lol-steel-bg);
+  color: var(--lol-steel-light);
+  border: 1px solid rgba(91, 122, 110, 0.15);
+  border-radius: var(--radius-xs);
   cursor: default;
-  transition: background-color 0.15s;
+  transition: all 0.2s;
+  letter-spacing: 0.04em;
 }
 
 .examples li:hover {
-  background-color: rgba(37, 99, 235, 0.12);
+  background: rgba(91, 122, 110, 0.15);
+  border-color: var(--lol-steel);
+  transform: translateY(-1px);
 }
 
 /* ---------- Loading ---------- */
 .loading-container {
   text-align: center;
-  min-height: 12rem;
+  min-height: 14rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.loading-container::before,
+.loading-container::after {
+  content: '◇';
+  position: absolute;
+  color: var(--lol-gold-dark);
+  font-size: 0.6rem;
+  opacity: 0.3;
+}
+.loading-container::before {
+  top: 0.75rem;
+  left: 0.75rem;
+}
+.loading-container::after {
+  bottom: 0.75rem;
+  right: 0.75rem;
 }
 
 .loading-container h2 {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--fg);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lol-gold-light);
+  margin-bottom: 0.35rem;
+}
+
+.loading-container .theme-name {
+  color: var(--lol-steel-light);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
 }
 
 .loading-animation {
-  margin: 1.5rem 0;
+  margin: 1rem 0 1.5rem;
 }
 
+/* LoL-style spinner */
 .spinner {
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid var(--border);
-  border-top-color: var(--acc);
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid rgba(200, 155, 60, 0.08);
+  border-top-color: var(--lol-gold);
+  border-right-color: var(--lol-steel);
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  animation: spin 0.9s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.06);
+  margin: 0 auto;
 }
 
 @keyframes spin {
@@ -348,104 +447,217 @@ button:focus-visible {
 }
 
 .loading-info {
-  color: var(--fg-muted);
-  font-size: 0.875rem;
+  color: var(--lol-text-muted);
+  font-size: 0.8rem;
   font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  max-width: 20rem;
+  line-height: 1.5;
+}
+
+.loading-info::after {
+  content: '';
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+  100% { content: ''; }
 }
 
 /* ---------- Story Container ---------- */
 .story-container {
   overflow: hidden;
+  position: relative;
+}
+
+.story-container::before,
+.story-container::after {
+  content: '◆';
+  position: absolute;
+  color: var(--lol-gold-dark);
+  font-size: 0.5rem;
+  opacity: 0.25;
+  z-index: 1;
+}
+.story-container::before {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+.story-container::after {
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 
 .story-actions {
   display: flex;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--lol-border);
   justify-content: flex-end;
 }
 
 /* ---------- Story Loader (nav) ---------- */
 .story-loader {
   overflow: hidden;
+  position: relative;
+}
+
+.story-loader::before,
+.story-loader::after {
+  content: '◆';
+  position: absolute;
+  color: var(--lol-gold-dark);
+  font-size: 0.5rem;
+  opacity: 0.25;
+  z-index: 1;
+}
+.story-loader::before {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+.story-loader::after {
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 
 .story-nav {
   padding: 0.75rem 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--lol-border);
 }
 
 /* ---------- Story Game ---------- */
 .story-game {
-  padding: 1.5rem;
+  padding: 2rem 1.75rem;
+  position: relative;
 }
 
 .story-header {
   text-align: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--lol-border);
+  position: relative;
+}
+
+.story-header::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: var(--lol-gold);
+  margin: 1rem auto 0;
+  opacity: 0.4;
 }
 
 .story-header h2 {
-  font-family: var(--font-heading);
-  font-size: 1.125rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--fg);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lol-gold-light);
+  text-shadow: 0 0 15px rgba(200, 155, 60, 0.12);
 }
 
 .story-content {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .story-node p {
   font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-  color: var(--fg);
+  font-size: 1.025rem;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  color: var(--lol-text);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  letter-spacing: 0.01em;
+}
+
+.story-node p::first-letter {
+  font-size: 2.5em;
+  font-family: var(--font-display);
+  color: var(--lol-gold);
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.5rem;
+  margin-top: 0.1rem;
+  text-shadow: 0 0 15px var(--lol-gold-glow);
+}
+
+.story-options {
+  margin-top: 1rem;
 }
 
 .story-options h3 {
   font-family: var(--font-heading);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: var(--fg);
+  margin-bottom: 0.85rem;
+  color: var(--lol-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.story-options h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1em;
+  background: var(--lol-gold);
+  border-radius: 1px;
 }
 
 .options-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.625rem;
 }
 
 /* ----- Story endings ----- */
 .story-ending {
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--lol-border);
+  border-radius: var(--radius-sm);
+  background: var(--lol-steel-bg);
 }
 
 .story-ending h3 {
-  font-family: var(--font-heading);
-  font-size: 1.125rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lol-gold-bright);
+  text-shadow: 0 0 20px var(--lol-gold-glow);
   margin-bottom: 0.75rem;
-  color: var(--fg);
 }
 
 .winning-message {
-  color: var(--success);
+  color: var(--lol-success);
   font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.04em;
 }
 
 .ending-message {
-  color: var(--fg-muted);
-  margin-bottom: 1rem;
+  color: var(--lol-text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
 }
 
 /* ----- Controls / reset etc ----- */
@@ -453,35 +665,124 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--lol-border);
 }
 
 /* ---------- Error Message ---------- */
 .error-message {
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
-  border-radius: var(--radius);
-  padding: 1.25rem;
+  background: rgba(184, 58, 42, 0.06);
+  border: 1px solid rgba(184, 58, 42, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
+  backdrop-filter: blur(4px);
+}
+
+.error-message h2 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--lol-destructive);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
 }
 
 .error-message p {
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  color: var(--destructive);
-  margin-bottom: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--lol-text-muted);
+  margin-bottom: 1rem;
+}
+
+.error-message button {
+  background: var(--lol-destructive);
+  color: var(--lol-text-bright);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.error-message button:hover {
+  background: #C94A3A;
+  box-shadow: 0 0 15px rgba(184, 58, 42, 0.25);
 }
 
 /* ---------- Footer ---------- */
 footer {
   text-align: center;
   margin-top: 3rem;
-  padding-top: 1rem;
-  color: var(--fg-sub);
-  font-size: 0.8125rem;
+  padding: 1.5rem 1rem;
+  color: var(--lol-text-sub);
+  font-size: 0.7rem;
   font-family: var(--font-mono);
-  border-top: 1px solid var(--border);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  display: block;
+  width: 6rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lol-gold-dark), transparent);
+  margin: 0 auto 1rem;
+  opacity: 0.4;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-input-container,
+.loading-container,
+.story-game,
+.story-loader {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .app-container {
+    padding: 1rem 0.75rem 2rem;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .theme-input-container,
+  .loading-container {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .story-game {
+    padding: 1.25rem 1rem;
+  }
+
+  .story-node p {
+    font-size: 0.925rem;
+  }
+
+  .story-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .story-controls button {
+    width: 100%;
+    max-width: 16rem;
+  }
 }

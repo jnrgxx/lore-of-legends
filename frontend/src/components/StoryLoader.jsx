@@ -28,9 +28,9 @@ function StoryLoader() {
 
         } catch (err) {
             if (err.response?.status === 404) {
-                setError("Story is not found.")
+                setError("This chronicle has been lost to the sands of Shurima.")
             } else {
-                setError("Failed to load story")
+                setError("The arcane connection has faltered")
             }
         } finally {
             setLoading(false)
@@ -42,15 +42,15 @@ function StoryLoader() {
     }
 
     if (loading) {
-        return <LoadingStatus theme={"story"} />
+        return <LoadingStatus theme={"the chronicle"} />
     }
 
     if (error) {
         return <div className="story-loader">
             <div className="error-message">
-                <h2>Story Not Found</h2>
+                <h2>Hextech Malfunction</h2>
                 <p>{error}</p>
-                <button onClick={createNewStory}>Go to story generator</button>
+                <button onClick={createNewStory}>Return to the Hextech Forge</button>
             </div>
         </div>
     }
